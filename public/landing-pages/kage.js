@@ -1728,7 +1728,7 @@
   const WANT_SHADOW = qs("shadow", HIGH ? "1" : "0") !== "0";
   /* A 1.8 DPR render buffer costs over three times as many pixels as a
            1x buffer.  These caps keep text crisp while preserving frame time. */
-  const DPR_CAP = qn("dpr", LOW ? 0.9 : HIGH ? 1.5 : 1.2);
+  const DPR_CAP = qn("dpr", LOW ? 1 : HIGH ? 1.5 : 1.2);
   /* Never cap touch devices at 30 FPS: lower their GPU work instead. */
   const FRAME_INTERVAL = 0;
   /* the renderer trades resolution for frame rate on its own — the scene is

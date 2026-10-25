@@ -1613,6 +1613,7 @@ h3 {
   color: var(--bone);
 }
 .foot-brand p {
+  display: flex;
   margin: 16px 0 0;
   max-width: 34ch;
   font-size: 13px;
@@ -2109,9 +2110,11 @@ body[data-layout-footer="b"] .foot-grid {
 }
 body[data-layout-footer="b"] .foot-brand {
   grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 70px minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 16px;
   padding-bottom: 34px;
   margin-bottom: 8px;
   border-bottom: 1px solid var(--line-soft);
@@ -2126,6 +2129,7 @@ body[data-layout-footer="b"] .foot-brand p {
   font-size: clamp(18px, 2vw, 30px);
   line-height: 1.35;
   color: var(--bone-dim);
+  text-align: center;
 }
 body[data-layout-footer="b"] .foot-grid > div:nth-child(n + 3) {
   padding-left: clamp(18px, 2.2vw, 34px);
@@ -2648,8 +2652,7 @@ body[data-layout-footer="b"] .foot-base span:last-child {
   }
   body[data-layout-footer="b"] .foot-brand {
     grid-column: auto;
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 16px;
+    gap: 16px;
   }
   body[data-layout-footer="b"] .foot-grid > div:nth-child(n + 3) {
     padding-left: 0;
@@ -2668,6 +2671,37 @@ body[data-layout-footer="b"] .foot-base span:last-child {
    to a line. Standing the numeral above the label gives the copy the whole
    column back. */
 @media (max-width: 560px) {
+  :root {
+    --pad: 18px;
+    --nav-h: 76px;
+  }
+  .nav-burger {
+    width: 44px;
+    height: 44px;
+    margin-right: -9px;
+  }
+  .nav-burger i {
+    right: 9px;
+  }
+  .nav-burger i:nth-child(1) {
+    top: 17px;
+  }
+  .nav-burger i:nth-child(2) {
+    top: 24px;
+  }
+  .nav-burger.active i:nth-child(1),
+  .nav-burger.active i:nth-child(2) {
+    top: 21px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hero-cta {
+    width: 100%;
+    min-height: 48px;
+    flex: 0 0 48px;
+  }
   body[data-layout-hero="b"] .chip {
     flex-direction: column;
     gap: 4px;
@@ -2890,5 +2924,86 @@ body[data-layout-footer="b"] .foot-base span:last-child {
     align-items: flex-start;
     flex-direction: column;
     gap: 9px;
+  }
+}
+
+/* Phone layout: give every information-dense group a full, readable measure
+   instead of relying on desktop's compact multi-column rhythm. */
+@media (max-width: 560px) {
+  .sec {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+  .sec-head {
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .sec-head .rule {
+    display: none;
+  }
+  body[data-layout-hero="b"] .chapters {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  body[data-layout-hero="b"] .chip {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+  }
+  body[data-layout-hero="b"] .chip .num {
+    min-width: 42px;
+    font-size: 28px;
+  }
+  .hero-actions {
+    flex-direction: row;
+    gap: 8px;
+  }
+  .hero-cta {
+    width: auto;
+    min-height: 42px;
+    flex: 1 1 calc(50% - 4px);
+    padding: 0 10px;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+  body[data-layout-story="b"] .gate-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  body[data-layout-story="b"] .gate-stats div {
+    min-height: 78px;
+    padding: 12px 8px;
+  }
+  body[data-layout-story="b"] .gate-stats div:nth-child(-n + 2) {
+    border-bottom: 0;
+  }
+  body[data-layout-story="b"] .gate-stats div span {
+    font-size: 8px;
+    letter-spacing: 0.12em;
+  }
+  .card-meta,
+  .contact-links a {
+    font-size: 10px;
+  }
+  .contact-form {
+    gap: 16px;
+  }
+  .contact-field input,
+  .contact-field textarea {
+    min-height: 48px;
+    font-size: 16px;
+  }
+  .contact-field textarea {
+    min-height: 132px;
+  }
+  .contact-submit {
+    width: auto;
+    min-height: 42px;
+    padding: 11px 18px;
+  }
+  .cta {
+    margin-top: 34px;
+    padding: 14px 21px;
+    font-size: 10px;
   }
 }
